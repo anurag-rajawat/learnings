@@ -1,0 +1,14 @@
+service:
+  flush: 1
+  log_level: info
+
+pipeline:
+  inputs:
+    - name: dummy
+      dummy: '{ "Namaste": "Fluent Bit"}'
+
+  outputs:
+    - name: stdout
+      match: "*"
+      format: json
+      json_date_format: iso8601
