@@ -1,0 +1,28 @@
+service:
+  flush: 1
+  log_level: info
+
+  http_server: on
+  http_port: 2020
+
+  hot_reload: on
+
+  # Enable health check response
+  health_check: on
+  # Numbers of errors allowed before returning failed health check
+  hc_errors_count: 10
+  # Number of failed retries before returning a failed health check
+  hc_retry_failure_count: 10
+  # Duration for errors to accumulate in number of seconds
+  hc_period: 60
+
+pipeline:
+  inputs:
+    - name: dummy
+      dummy: '{ "Namaste": "Fluent Bit"}'
+
+  outputs:
+    - name: stdout
+      match: "*"
+      format: json
+      json_date_format: iso8601
